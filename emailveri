@@ -1,0 +1,51 @@
+//
+//  ViewController.swift
+//  isItEmail
+//
+//  Created by SUP'Internet 15 on 04/12/2018.
+//  Copyright © 2018 SUP'Internet 15. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    @IBOutlet weak var MY: UILabel!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        MY.text = "berd2ene"
+    }
+    
+    
+    @IBOutlet weak var email: UITextField!
+    
+    func isValidEmail(testStr:String) -> Bool {
+        
+        print("validate emilId: \(testStr)")
+        
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        
+        let result = emailTest.evaluate(with: testStr)
+        
+        return result
+        
+    }
+    
+
+    @IBAction func onBtnPress(_ sender: UIButton) {
+        let email:NSString = self.email.text! as NSString
+        
+        if isValidEmail(testStr: email as String)
+        {
+            print("Validate EmailID")
+        }
+        else
+        {
+            print("invalide EmailID")
+        }
+    }
+    
+}
